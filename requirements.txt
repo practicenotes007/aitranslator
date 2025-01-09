@@ -1,5 +1,6 @@
 requests
 PyPDF2
+PyMuPDF
 pycryptodome
 openai
 python-dotenv

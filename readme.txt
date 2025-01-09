@@ -15,9 +15,9 @@
 
 3. 配置需要翻译的页码范围：
    - 打开 `deepseek_pdf_trans.py` 文件。
-   - 修改 `start_page` 和 `end_page` 变量，设置需要翻译的页码范围。例如，翻译第829页到第892页：
+   - 修改 main函数中的`start_page` 和 `end_page` 变量，设置需要翻译的页码范围。例如，翻译第829页到第892页：
      ```python
-     start_page = 829  # 起始页码
+     start_page = 829  # 起始页码（注意：从0开始，即PDF文档的第1页在这里是0。）
      end_page = 892    # 结束页码
      ```
 
@@ -25,3 +25,5 @@
    ```
    python deepseek_pdf_trans.py
    ```
+
+5. 翻译结果会保存到当前目录下的 `filename.pdf_ZN.md` 文件中。

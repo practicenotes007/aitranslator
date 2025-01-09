@@ -45,16 +45,16 @@ def translate_text(text):
 # 保存翻译结果到Markdown文件
 def save_to_markdown(content, original_content, page_number, file_path):
     with open(file_path, 'a', encoding='utf-8') as file:
-        file.write(f"=======PAGE {page_number + 1}=======\n\n")
-        file.write(f"**Original Content:**\n\n{original_content}\n\n")
-        file.write(f"**Translated Content:**\n\n{content}\n\n")
-        file.write("-" * 3 + "\n\n")
+        file.write(f"# PDF的第{page_number + 1}页开始=======\n\n")
+        # .write(f"**Original Content:**\n\n{original_content}\n\n")
+        file.write(f"**翻译内容:**\n\n{content}\n\n")
+        file.write(f"# PDF的第{page_number + 1}页结束=======\n\n")
 
 # 主函数
 def main():
-    pdf_path = 'ACPI_Spec_6_5_Aug29.pdf'  # 替换为你的PDF文件路径
+    pdf_path = 'UEFI_Spec_2_9_2021_03-18.pdf'  # 替换为你的PDF文件路径   ACPI_Spec_6_5_Aug29
     start_page = 0  # 起始页码
-    end_page = 0    # 结束页码
+    end_page = 1    # 结束页码
 
     try:
         # 生成文件名
