@@ -47,7 +47,7 @@ def save_to_markdown(content, original_content, page_number, file_path):
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(f"# PDF的第{page_number + 1}页开始=======\n\n")
         # .write(f"**Original Content:**\n\n{original_content}\n\n")
-        file.write(f"**翻译内容:**\n\n{content}\n\n")
+        file.write(f"\n\n{content}\n\n")
         file.write(f"# PDF的第{page_number + 1}页结束=======\n\n")
 
 # 主函数
