@@ -49,34 +49,3 @@ def save_to_markdown(content, original_content, page_number, file_path):
         # .write(f"**Original Content:**\n\n{original_content}\n\n")
         file.write(f"\n\n{content}\n\n")
         file.write(f"# PDF的第{page_number + 1}页结束=======\n\n")
-
-# 主函数
-def main():
-    pdf_path = 'UEFI_Spec_2_9_2021_03-18.pdf'  # 替换为你的PDF文件路径   ACPI_Spec_6_5_Aug29
-    start_page = 0  # 起始页码
-    end_page = 1    # 结束页码
-
-    try:
-        # 生成文件名
-        file_name = f"{pdf_path}_ZN.md"
-        
-        # 清空或创建文件
-        with open(file_name, 'w', encoding='utf-8') as file:
-            pass
-        
-        # 循环翻译每一页
-        for page_number in range(start_page, end_page + 1):
-            # 提取第一页内容
-            page_content = extract_page_content(pdf_path, page_number)
-            
-            # 翻译内容
-            translated_content = translate_text(page_content)
-            
-            # 保存翻译结果
-            save_to_markdown(translated_content, page_content, page_number, file_name)
-            print(f"翻译结果已保存到{file_name}，页码: {page_number + 1}")
-    except Exception as e:
-        print(f"发生错误: {e}")
-
-if __name__ == "__main__":
-    main()
