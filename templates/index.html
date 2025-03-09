@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Translator</title>
+</head>
+<body>
+    <h1>PDF Translator</h1>
+    <form method="post">
+        <label for="pdf_path">PDF路径:</label>
+        <input type="text" id="pdf_path" name="pdf_path" required><br><br>
+        
+        <label for="start_page">起始页码:</label>
+        <input type="number" id="start_page" name="start_page" required><br><br>
+        
+        <label for="end_page">结束页码:</label>
+        <input type="number" id="end_page" name="end_page" required><br><br>
+        
+        <input type="submit" value="提交">
+    </form>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

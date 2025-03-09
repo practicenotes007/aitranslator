@@ -1,29 +1,52 @@
-# 使用指南
+# PDF 智能翻译工具
 
-1. 安装依赖库：
-   ```
-   pip install -r requirements.txt
-   ```
+基于 Flask 的 PDF 多线程翻译工具，支持指定页码范围翻译并保存为 Markdown 格式。
 
-2. 创建 `.env` 文件，并添加以下内容：
-   ```
-   API_KEY=your_openai_api_key_here
-   BASE_URL=your_base_url_here
-   ```
+## 功能特性
+- 多线程 PDF 页面内容提取
+- DeepSeek 翻译接口集成
+- 翻译结果自动保存为双语对照格式
+- Web 界面交互式操作
 
-   你可以参考 `.env.example` 文件创建 `.env` 文件。
+## 快速开始
 
-3. 配置需要翻译的页码范围：
-   - 打开 `main.py` 文件。
-   - 修改 main函数中的`start_page` 和 `end_page` 变量，设置需要翻译的页码范围。例如，翻译第829页到第892页：
-     ```python
-     start_page = 829  # 起始页码（注意：从0开始，即PDF文档的第1页在这里是0。）
-     end_page = 892    # 结束页码
-     ```
+### 环境要求
+- Python 3.7+
+- 以下依赖库：
+```
+pip install requests PyPDF2 python-dotenv flask
+```
+### 配置步骤
+在项目根目录创建 .env 文件：
+```
+API_KEY=your_deepseek_api_key
+BASE_URL=https://api.deepseek.com/v1
+```
+### 启动 Flask 应用：
+```
+python main.py
+```
 
-4. 运行脚本：（多线程版本，根据页数最多启动10个线程访问DeepSeek LLM）
-   ```
-   python main.py
-   ```
+访问 Web 界面： http://localhost:5000
 
-5. 翻译结果会根据启动的线程个数保存到当前目录下的文件中。
+### 使用说明
+
+在网页表单中输入：
+PDF 文件绝对路径（例如：D:/documents/sample.pdf）
+起始页码和结束页码
+点击提交开始后台翻译任务
+翻译结果保存在同目录下，命名格式：原文件名_ZN-起始页-结束页.md
+
+### 常见问题
+
+Q1: 提示 "PDF 文件不存在" 
+
+➔ 请检查文件路径是否正确，Windows 系统建议使用绝对路径
+
+Q2: 翻译接口报错 
+
+➔ 请确认 .env 文件中的 API 密钥和接口地址配置正确
+
+Q3: 如何查看实时翻译进度？ 
+
+➔ 查看控制台输出的保存日志
